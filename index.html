@@ -47,15 +47,24 @@
                 <h2>Быстрая консультация менеджера</h2>
                 <p>Оставьте контакты, и наш скрипт мгновенно передаст заявку в Telegram дежурному специалисту.</p>
 
-                <form class="lead-form" action="https://telegram.org" method="GET">
-                    <!-- Скрытые настройки для Телеграма -->
-                    <input type="hidden" name="chat_id" value="5956812464">
+                <form class="lead-form" action="https://web3forms.com" method="POST">
+                    <!-- Твой личный секретный ключ, который свяжет сайт с ботом -->
+                    <input type="hidden" name="access_key" value="63db87cc-a70d-45fc-9418-62d4766ec483">
 
-                    <!-- Поля для ввода -->
-                    <input type="text" name="text" placeholder="Введите ваше имя и телефон" required>
+                    <!-- Настройки уведомления для Телеграма -->
+                    <input type="hidden" name="subject" value="🚀 СВЕЖАЯ ЗАЯВКА С САЙТА АВТОХАУСА!">
+                    <input type="hidden" name="from_name" value="Система AUTOBREST">
+
+                    <!-- Поля для ввода данных клиентом -->
+                    <input type="text" name="Имя клиента" placeholder="Ваше имя" required>
+                    <input type="tel" name="Телефон" placeholder="+375 (XX) XXX-XX-XX" required>
+
+                    <!-- Куда перенаправить клиента после отправки (в твоего бота!) -->
+                    <input type="hidden" name="redirect" value="https://t.me">
 
                     <button type="submit" class="btn-submit">Получить подбор авто</button>
                 </form>
+
 
 
             </div>
