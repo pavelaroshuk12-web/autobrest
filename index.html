@@ -79,21 +79,16 @@
 
 <script>
         document.getElementById('tgForm').addEventListener('submit', async function (e) {
-            // Отменяем стандартную перезагрузку страницы браузером
             e.preventDefault();
 
-            // Получаем то, что ввел пользователь в поля формы
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
 
-            // Твои проверенные и точные данные
+            // Твои данные (проверь, чтобы внутри кавычек не было лишних пробелов в начале или конце!)
             const token = '8609052184:AAHbVMGESL_lXuJeRbd8TFoL4s8wpXPVOVg';
             const chatId = '5956812464';
 
-            // Формируем красивый текст сообщения
             const messageText = `🚀 <b>СВЕЖАЯ ЗАЯВКА С САЙТА!</b>\n\n👤 <b>Имя:</b> ${name}\n📞 <b>Телефон:</b> ${phone}`;
-
-            // URL для отправки запроса к Telegram API
             const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
             try {
@@ -107,15 +102,17 @@
                     })
                 });
 
+                const data = await response.json(); // Читаем ответ от Telegram
+
                 if (response.ok) {
-                    alert('Успешно! Ваша заявка мгновенно передана в Telegram-бота менеджера.');
-                    // Очищаем поля формы, чтобы клиент видел, что всё отправилось
+                    alert('Успешно! Заявка прилетела в твой Telegram.');
                     document.getElementById('tgForm').reset();
                 } else {
-                    alert('Телеграм отклонил запрос. Убедитесь, что вы запустили вашего бота в ТГ (нажали /start)!');
+                    // ЕСЛИ БУДЕТ ОШИБКА, ЭТОТ ПУНКТ ПОКАЖЕТ ЕЁ ТЕКСТОМ:
+                    alert(`Telegram вернул ошибку: ${data.description} (Код: ${data.error_code})`);
                 }
             } catch (error) {
-                alert('Ошибка сети. Нет связи с сервером Telegram.');
+                alert('Ошибка сети. Запрос вообще не дошел до Telegram. Проверь интернет или токен.');
             }
         });
     </script>
