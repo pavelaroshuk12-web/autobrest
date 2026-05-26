@@ -77,23 +77,23 @@
         </div>
     </footer>
 
-    <script>
+<script>
         document.getElementById('tgForm').addEventListener('submit', async function (e) {
-            // Отменяем перезагрузку страницы
+            // Отменяем стандартную перезагрузку страницы браузером
             e.preventDefault();
 
-            // Получаем данные из полей
+            // Получаем то, что ввел пользователь в поля формы
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
 
-            // Твои рабочие данные бота
-            const token = '8609052184:AAHbvMGESL_1XuJeRbd8TFoL4s8wpXPV0Vg';
+            // Твои проверенные и точные данные
+            const token = '8609052184:AAHbVMGESL_lXuJeRbd8TFoL4s8wpXPVOVg';
             const chatId = '5956812464';
 
-            // Формируем текст (добавлен красивый HTML-вид)
+            // Формируем красивый текст сообщения
             const messageText = `🚀 <b>СВЕЖАЯ ЗАЯВКА С САЙТА!</b>\n\n👤 <b>Имя:</b> ${name}\n📞 <b>Телефон:</b> ${phone}`;
 
-            // Исправленный URL (с api.telegram.org/bot...)
+            // URL для отправки запроса к Telegram API
             const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
             try {
@@ -109,10 +109,10 @@
 
                 if (response.ok) {
                     alert('Успешно! Ваша заявка мгновенно передана в Telegram-бота менеджера.');
-                    // Очищаем форму после успешной отправки
+                    // Очищаем поля формы, чтобы клиент видел, что всё отправилось
                     document.getElementById('tgForm').reset();
                 } else {
-                    alert('Телеграм отклонил запрос. Убедитесь, что ваш бот запущен и вы написали ему /start!');
+                    alert('Телеграм отклонил запрос. Убедитесь, что вы запустили вашего бота в ТГ (нажали /start)!');
                 }
             } catch (error) {
                 alert('Ошибка сети. Нет связи с сервером Telegram.');
