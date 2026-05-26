@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOBREST | Премиум импорт авто из США и Европы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🚀 AUTO<span>BREST</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="catalog.html">Каталог авто</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <header class="hero-section">
+        <div class="container">
+            <span class="badge">Официальный пригон в Беларусь</span>
+            <h1>Закажи авто мечты с выгодой до 30%</h1>
+            <p>Полное сопровождение: от аукциона в США и Европы до растаможки на СВХ in Бресте. Без скрытых комиссий.</p>
+            
+            <div class="cta-container">
+                <!-- Сюда вставь ссылку на бота, как делал в прошлый раз -->
+                <a href="https://t.me" target="_blank" class="btn-tg">
+                    💬 Рассчитать пошлину в ИИ-Боте
+                </a>
+                <a href="#callback" class="btn-secondary">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Блок формы (Синхронизация с ботом) -->
+    <section id="callback" class="form-section">
+        <div class="container">
+            <div class="form-box">
+                <h2>Быстрая консультация менеджера</h2>
+                <p>Оставьте контакты, и наш скрипт мгновенно передаст заявку в Telegram дежурному специалисту.</p>
+                
+                <form class="lead-form" id="tgForm">
+                    <input type="text" id="userName" placeholder="Ваше имя" required>
+                    <input type="tel" id="userPhone" placeholder="+375 (XX) XXX-XX-XX" required>
+                    <button type="submit" class="btn-submit">Получить подбор авто</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Крутой черный футер (Подстилка) -->
+    <footer id="contacts" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3 class="logo">🚀 AUTO<span>BREST</span></h3>
+                <p>Ваш надежный партнер в мире импорта автомобилей с 2024 года.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Nav-links</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог машин</a></li>
+                </ul>
+            </div>
+            <div class="footer-contacts">
+                <h4>Контакты и Отзывы</h4>
+                <p>📍 г. Брест, ул. Московская (СВХ Брест-Белтаможсервис)</p>
+                <p>📞 Тел: +375 (29) 123-45-67</p>
+                <p>💬 <a href="#reviews" class="review-link">Читать отзывы клиентов ⭐⭐⭐⭐⭐</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 AUTOBREST Studio. Разработано на Python, HTML5 & Advanced CSS.</p>
+        </div>
+    </footer>
+
+    <!-- Скрипт отправки данных в твоего Телеграм-бота -->
+    <script>
+    document.getElementById('tgForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+        
+        // Вставь свои данные между кавычек вместо русского текста ниже:
+        const token ='8609052184:AAHbVMGESL_lXuJeRbd8TFoL4s8wpXPVOVg'; 
+        const chatId ='5956812464'; 
+        
+        const text = `🚀 СВЕЖАЯ ЗАЯВКА С САЙТА!\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
+        const url = "https://telegram.org" + token + "/sendMessage?chat_id=" + chatId + "&text=" + encodeURIComponent(text);
+        
+        try {
+            await fetch(url);
+            alert('Успешно! Ваша заявка мгновенно передана в Telegram-бота менеджера.');
+            document.getElementById('tgForm').reset();
+        } catch (error) {
+            alert('Ошибка отправки. Проверьте правильность токена и ID чата.');
+        }
+    });
+    </script>
+
+</body>
+</html>
